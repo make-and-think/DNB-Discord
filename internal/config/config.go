@@ -22,6 +22,13 @@ type Config struct {
 		WriteBufferSize int64
 	}
 
+	TaggerBackend struct {
+		Url       string
+		Token     string
+		ImageSize int64
+		ImageType string //TODO change to lib type of what used
+	}
+
 	Another struct {
 		Test string
 	}
