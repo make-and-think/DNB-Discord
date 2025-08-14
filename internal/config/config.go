@@ -15,18 +15,9 @@ type Config struct {
 		WriteBufferSize int64
 	}
 
-	RedisClientFileHash struct {
-		Uri string
-
-		ReadBufferSize  int64
-		WriteBufferSize int64
-	}
-
-	TaggerBackend struct {
-		Url       string
-		Token     string
-		ImageSize int64
-		ImageType string //TODO change to lib type of what used
+	BackendEndpoints struct {
+		Urls  []string
+		Token string
 	}
 
 	Another struct {
@@ -34,12 +25,12 @@ type Config struct {
 	}
 }
 
-// Global is the global configuration instance.
-var Global Config
+// Values is the global configuration instance.
+var Values Config
 
 func LoadConfig(path string) (*Config, error) {
-	if _, err := toml.DecodeFile(path, &Global); err != nil {
+	if _, err := toml.DecodeFile(path, &Values); err != nil {
 		return nil, err
 	}
-	return &Global, nil
+	return &Values, nil
 }
